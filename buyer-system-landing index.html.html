@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Buyer System — Turn Your Followers Into Paying Customers</title>
+<meta name="description" content="The proven 3-step system Nigerian business owners use to turn social media followers into consistent revenue — without paid ads."/>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','PIXEL_ID_HERE');fbq('track','PageView');
+</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,600&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+/* ============================================
+   DESIGN TOKENS
+============================================ */
+:root {
+  --bg:        #0C0C0A;
+  --bg-2:      #111110;
+  --bg-3:      #1A1A17;
+  --border:    rgba(255,255,255,0.08);
+  --border-2:  rgba(255,255,255,0.14);
+  --text:      #F0EDE6;
+  --text-muted:#9A9690;
+  --text-faint:#5A5850;
+  --gold:      #F0A500;
+  --gold-light:#F5C842;
+  --green:     #00843D;
+  --red:       #E84545;
+  --white:     #FFFFFF;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Sora', system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --max-w: 1140px;
+  --max-w-prose: 740px;
+}
+
+/* ============================================
+   RESET + BASE
+============================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:1rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ============================================
+   LAYOUT UTILITIES
+============================================ */
+.container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.prose{max-width:var(--max-w-prose);margin:0 auto}
+.section{padding:100px 0}
+.section--tight{padding:64px 0}
+.grid{display:grid}
+.flex{display:flex}
+
+/* ============================================
+   TYPOGRAPHY
+============================================ */
+.display-1{font-family:var(--font-display);font-size:clamp(2.6rem,6vw,5.2rem);font-weight:800;line-height:1.08;letter-spacing:-0.02em}
+.display-2{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:600;line-height:1.12;letter-spacing:-0.02em}
+.display-3{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.4rem);font-weight:600;line-height:1.2}
+.heading{font-family:var(--font-body);font-size:clamp(1.1rem,2vw,1.4rem);font-weight:600;letter-spacing:-0.01em}
+.label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.body-lg{font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.7;color:var(--text-muted)}
+.body-sm{font-size:.9rem;color:var(--text-muted)}
+.italic{font-style:italic}
+
+/* ============================================
+   BUTTONS
+============================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:18px 36px;border-radius:var(--radius-sm);
+  font-family:var(--font-body);font-size:1rem;font-weight:600;
+  transition:all .2s ease;text-align:center;
+}
+.btn-gold{
+  background:var(--gold);color:#000;
+}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 40px rgba(240,165,0,0.35)}
+.btn-gold:active{transform:translateY(0)}
+.btn-outline{
+  background:transparent;color:var(--text);
+  border:1px solid var(--border-2);
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-lg{padding:22px 48px;font-size:1.05rem}
+.btn-full{width:100%}
+
+/* ============================================
+   NAV
+============================================ */
+.nav{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  padding:20px 0;
+  border-bottom:1px solid transparent;
+  transition:all .3s;
+}
+.nav.scrolled{
+  background:rgba(12,12,10,0.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav__inner{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav__logo{
+  font-family:var(--font-display);font-weight:800;font-size:1.25rem;
+  letter-spacing:-0.02em;color:var(--white);
+}
+.nav__logo span{color:var(--gold)}
+.nav__cta{display:flex;align-items:center;gap:16px}
+.nav__link{font-size:.875rem;font-weight:500;color:var(--text-muted);transition:color .2s}
+.nav__link:hover{color:var(--white)}
+.btn-nav{padding:12px 24px;font-size:.875rem}
+
+/* ============================================
+   HERO
+============================================ */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:140px 0 100px;
+  position:relative;
+  overflow:hidden;
+}
+.hero__bg{
+  position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 60% 40%, rgba(240,165,0,0.07) 0%, transparent 60%),
+             radial-gradient(ellipse 40% 40% at 10% 70%, rgba(0,132,61,0.06) 0%, transparent 50%);
+}
+.hero__grid-bg{
+  position:absolute;inset:0;z-index:0;opacity:.4;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+}
+.hero__inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero__tag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(240,165,0,0.1);border:1px solid rgba(240,165,0,0.25);
+  border-radius:100px;padding:8px 16px;
+  font-size:.8rem;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:28px;
+}
+.hero__tag-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero__headline{margin-bottom:24px}
+.hero__headline em{color:var(--gold);font-style:italic}
+.hero__sub{margin-bottom:40px}
+.hero__ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+.hero__proof{display:flex;align-items:center;gap:20px;padding-top:24px;border-top:1px solid var(--border)}
+.hero__avatars{display:flex}
+.hero__avatars img,.hero__avatar-fake{
+  width:36px;height:36px;border-radius:50%;
+  border:2px solid var(--bg);
+  margin-left:-10px;background:var(--bg-3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;font-weight:700;color:var(--gold);overflow:hidden;
+}
+.hero__avatars .hero__avatar-fake:first-child{margin-left:0}
+.hero__proof-text{font-size:.85rem;color:var(--text-muted)}
+.hero__proof-text strong{color:var(--text)}
+.hero__visual{position:relative}
+.hero__card{
+  background:var(--bg-2);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-lg);
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+}
+.hero__card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--green));
+}
+.hero__metric{margin-bottom:24px}
+.metric-label{font-size:.75rem;color:var(--text-muted);font-weight:500;margin-bottom:4px}
+.metric-value{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--white);line-height:1}
+.metric-value span{color:var(--gold)}
+.metric-change{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.75rem;font-weight:600;color:#3DD68C;
+  background:rgba(61,214,140,0.12);border-radius:100px;padding:4px 10px;margin-top:8px;
+}
+.hero__bars{margin-top:20px}
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.bar-label{font-size:.75rem;color:var(--text-muted);width:80px;flex-shrink:0}
+.bar-track{flex:1;height:6px;background:var(--bg-3);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+.bar-val{font-size:.75rem;font-weight:600;color:var(--text);width:36px;text-align:right}
+.hero__card-2{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--bg-3);border:1px solid var(--border-2);
+  border-radius:var(--radius-md);padding:16px 20px;
+  width:200px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+.card-2-label{font-size:.7rem;color:var(--text-muted);margin-bottom:6px}
+.card-2-val{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--gold)}
+.card-2-sub{font-size:.7rem;color:var(--text-faint);margin-top:4px}
+
+/* ============================================
+   URGENCY BAR
+============================================ */
+.urgency{
+  background:linear-gradient(135deg,rgba(240,165,0,0.15),rgba(240,165,0,0.06));
+  border-top:1px solid rgba(240,165,0,0.2);
+  border-bottom:1px solid rgba(240,165,0,0.2);
+  padding:14px 0;text-align:center;
+}
+.urgency__inner{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.urgency__text{font-size:.9rem;font-weight:500}
+.urgency__text strong{color:var(--gold)}
+.urgency__divider{width:1px;height:16px;background:var(--border-2)}
+.urgency__counter{
+  display:flex;align-items:center;gap:8px;
+  font-size:.85rem;font-weight:600;color:var(--gold);
+}
+.counter-box{
+  background:rgba(240,165,0,0.15);border:1px solid rgba(240,165,0,0.3);
+  border-radius:4px;padding:4px 10px;font-family:var(--font-display);font-weight:800;font-size:1.1rem;
+  min-width:36px;text-align:center;
+}
+
+/* ============================================
+   PROBLEM SECTION
+============================================ */
+.problem{background:var(--bg-2)}
+.problem__header{text-align:center;margin-bottom:60px}
+.problem__header .display-2{margin:16px 0 20px}
+.problem__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.pain-card{
+  background:var(--bg-3);padding:36px 28px;
+  transition:background .2s;
+}
+.pain-card:hover{background:#1E1E1B}
+.pain-card:first-child{border-radius:var(--radius-md) 0 0 var(--radius-md)}
+.pain-card:last-child{border-radius:0 var(--radius-md) var(--radius-md) 0}
+.pain-icon{font-size:1.8rem;margin-bottom:16px}
+.pain-title{font-weight:600;font-size:1.05rem;margin-bottom:10px;color:var(--white)}
+.pain-text{font-size:.9rem;color:var(--text-muted);line-height:1.65}
+.problem__statement{
+  margin-top:60px;
+  padding:48px;
+  background:var(--bg);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-lg);
+  text-align:center;
+}
+.problem__statement .display-3{margin-bottom:16px}
+.problem__statement p{max-width:620px;margin:0 auto;color:var(--text-muted);font-size:1rem}
+
+/* ============================================
+   SOLUTION
+============================================ */
+.solution__header{text-align:center;margin-bottom:60px}
+.solution__header .display-2{margin:16px 0 20px}
+.solution__steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.step-card{
+  padding:36px 28px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  position:relative;
+  overflow:hidden;
+  transition:border-color .2s,transform .2s;
+}
+.step-card:hover{border-color:rgba(240,165,0,0.3);transform:translateY(-4px)}
+.step-num{
+  font-family:var(--font-display);font-size:5rem;font-weight:800;
+  color:rgba(240,165,0,0.08);line-height:1;
+  position:absolute;top:16px;right:20px;
+}
+.step-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:rgba(240,165,0,0.12);display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;margin-bottom:20px;
+}
+.step-title{font-family:var(--font-display);font-size:1.3rem;font-weight:600;margin-bottom:12px}
+.step-text{font-size:.9rem;color:var(--text-muted);line-height:1.65}
+.step-result{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:20px;padding:8px 14px;
+  background:rgba(61,214,140,0.08);border:1px solid rgba(61,214,140,0.15);
+  border-radius:100px;font-size:.75rem;font-weight:600;color:#3DD68C;
+}
+
+/* ============================================
+   PRODUCT (MODULES)
+============================================ */
+.product{background:var(--bg-2)}
+.product__header{text-align:center;margin-bottom:60px}
+.product__header .display-2{margin:16px 0 20px}
+.product__wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.module-list{display:flex;flex-direction:column;gap:4px}
+.module{
+  padding:20px 24px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:16px;
+}
+.module.active,.module:hover{
+  background:rgba(240,165,0,0.06);
+  border-color:rgba(240,165,0,0.3);
+}
+.module-num{
+  font-family:var(--font-display);font-size:.85rem;font-weight:600;color:var(--gold);
+  width:28px;flex-shrink:0;
+}
+.module-info{flex:1}
+.module-title{font-weight:600;font-size:.95rem;margin-bottom:4px}
+.module-meta{font-size:.78rem;color:var(--text-muted)}
+.module-arrow{color:var(--text-faint);transition:color .2s}
+.module.active .module-arrow,.module:hover .module-arrow{color:var(--gold)}
+.module-detail{
+  position:sticky;top:120px;
+  background:var(--bg);border:1px solid var(--border-2);
+  border-radius:var(--radius-lg);padding:40px;
+}
+.module-detail__tag{margin-bottom:16px}
+.module-detail__title{font-family:var(--font-display);font-size:1.8rem;font-weight:600;margin-bottom:16px;line-height:1.2}
+.module-detail__desc{color:var(--text-muted);font-size:.95rem;margin-bottom:28px;line-height:1.7}
+.lesson-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.lesson-item{display:flex;align-items:flex-start;gap:12px;font-size:.9rem}
+.lesson-icon{color:var(--gold);flex-shrink:0;margin-top:3px}
+
+/* ============================================
+   VALUE STACK
+============================================ */
+.value-stack{text-align:center}
+.value-stack__header{margin-bottom:60px}
+.value-stack__header .display-2{margin:16px 0 20px}
+.stack-table{
+  border:1px solid var(--border-2);border-radius:var(--radius-lg);overflow:hidden;
+  max-width:720px;margin:0 auto 40px;
+}
+.stack-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 28px;border-bottom:1px solid var(--border);
+  transition:background .2s;
+}
+.stack-row:last-child{border-bottom:none}
+.stack-row:hover{background:rgba(255,255,255,0.02)}
+.stack-row.bonus{background:rgba(240,165,0,0.04)}
+.stack-item{font-size:.95rem;font-weight:500;text-align:left;flex:1}
+.stack-price{font-family:var(--font-display);font-size:1.2rem;font-weight:600;color:var(--text-muted);white-space:nowrap}
+.stack-price.real{color:var(--gold)}
+.stack-total{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 28px;background:rgba(240,165,0,0.08);
+  border-radius:0 0 var(--radius-lg) var(--radius-lg);
+}
+.total-label{font-weight:600;font-size:1rem}
+.total-val{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--gold)}
+.vs-price{
+  font-family:var(--font-display);font-size:3rem;font-weight:800;
+  color:var(--white);margin:8px 0 4px;
+}
+.vs-price del{color:var(--text-faint);font-size:1.8rem}
+.vs-sub{font-size:.9rem;color:var(--text-muted);margin-bottom:32px}
+
+/* ============================================
+   TESTIMONIALS
+============================================ */
+.testimonials{background:var(--bg-2)}
+.testimonials__header{text-align:center;margin-bottom:60px}
+.testimonials__header .display-2{margin:16px 0 20px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{
+  background:var(--bg);border:1px solid var(--border-2);
+  border-radius:var(--radius-lg);padding:32px;
+  display:flex;flex-direction:column;gap:20px;
+  transition:border-color .2s,transform .2s;
+}
+.testi-card:hover{border-color:rgba(240,165,0,0.3);transform:translateY(-4px)}
+.testi-stars{display:flex;gap:4px;color:var(--gold);font-size:.9rem}
+.testi-quote{font-size:.95rem;line-height:1.7;color:var(--text);flex:1}
+.testi-quote em{color:var(--gold);font-style:normal;font-weight:600}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--green));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.85rem;color:#000;flex-shrink:0;
+}
+.testi-name{font-weight:600;font-size:.9rem}
+.testi-biz{font-size:.8rem;color:var(--text-muted)}
+.testi-result{
+  padding:16px 20px;
+  background:rgba(61,214,140,0.06);border:1px solid rgba(61,214,140,0.15);
+  border-radius:var(--radius-md);
+  font-size:.85rem;font-weight:600;color:#3DD68C;text-align:center;
+}
+
+/* ============================================
+   FAQ
+============================================ */
+.faq__header{text-align:center;margin-bottom:60px}
+.faq__header .display-2{margin:16px 0}
+.faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden}
+.faq-q{
+  width:100%;padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-weight:600;font-size:.95rem;text-align:left;color:var(--text);
+  cursor:pointer;background:transparent;transition:background .2s;
+}
+.faq-q:hover{background:rgba(255,255,255,0.02)}
+.faq-icon{flex-shrink:0;transition:transform .3s;color:var(--gold)}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+}
+.faq-item.open .faq-a{max-height:400px}
+.faq-a-inner{padding:0 24px 24px;font-size:.92rem;color:var(--text-muted);line-height:1.7}
+
+/* ============================================
+   PRICING
+============================================ */
+.pricing{background:var(--bg-2)}
+.pricing__header{text-align:center;margin-bottom:60px}
+.pricing__header .display-2{margin:16px 0 20px}
+.pricing-card{
+  max-width:520px;margin:0 auto;
+  background:var(--bg);border:1px solid rgba(240,165,0,0.3);
+  border-radius:var(--radius-lg);overflow:hidden;
+}
+.pricing-card__top{
+  padding:40px;
+  background:linear-gradient(135deg,rgba(240,165,0,0.08),rgba(240,165,0,0.02));
+  border-bottom:1px solid var(--border);text-align:center;
+}
+.pricing-badge{
+  display:inline-block;background:var(--gold);color:#000;
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 14px;border-radius:100px;margin-bottom:20px;
+}
+.pricing-name{font-family:var(--font-display);font-size:1.8rem;font-weight:700;margin-bottom:8px}
+.pricing-desc{font-size:.9rem;color:var(--text-muted);margin-bottom:28px}
+.price-display{margin-bottom:8px}
+.price-display .price-main{font-family:var(--font-display);font-size:3.6rem;font-weight:800;color:var(--gold)}
+.price-display .price-old{font-family:var(--font-display);font-size:1.6rem;color:var(--text-faint);text-decoration:line-through;margin-right:12px}
+.price-usd{font-size:.85rem;color:var(--text-muted);margin-bottom:24px}
+.pricing-card__body{padding:40px}
+.feature-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+.feature-item{display:flex;align-items:flex-start;gap:12px;font-size:.92rem}
+.feature-check{color:var(--gold);flex-shrink:0;margin-top:2px}
+.guarantee{
+  margin-top:24px;padding:20px;
+  border:1px solid var(--border);border-radius:var(--radius-md);
+  display:flex;align-items:flex-start;gap:14px;
+  font-size:.85rem;color:var(--text-muted);
+}
+.guarantee-icon{font-size:1.5rem;flex-shrink:0}
+
+/* ============================================
+   CTA SECTION
+============================================ */
+.cta-section{text-align:center;position:relative;overflow:hidden}
+.cta-section__bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(240,165,0,0.08) 0%,transparent 70%);
+}
+.cta-section .display-2{margin:16px 0 20px}
+.cta-section .body-lg{margin-bottom:40px;max-width:580px;margin-left:auto;margin-right:auto;display:block}
+
+/* ============================================
+   FOOTER
+============================================ */
+footer{
+  background:var(--bg);border-top:1px solid var(--border);
+  padding:60px 0 32px;
+}
+.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer__brand-name{font-family:var(--font-display);font-size:1.3rem;font-weight:800;margin-bottom:12px}
+.footer__brand-name span{color:var(--gold)}
+.footer__tagline{font-size:.875rem;color:var(--text-muted);margin-bottom:20px;max-width:240px;line-height:1.6}
+.footer__col-title{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px}
+.footer__links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer__links a{font-size:.875rem;color:var(--text-muted);transition:color .2s}
+.footer__links a:hover{color:var(--gold)}
+.footer__bottom{
+  padding-top:28px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+}
+.footer__legal{font-size:.8rem;color:var(--text-faint)}
+.footer__legal a{color:var(--text-faint);margin-left:20px;transition:color .2s}
+.footer__legal a:hover{color:var(--text-muted)}
+
+/* ============================================
+   BRAND BAR
+============================================ */
+.brand-bar{padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.brand-bar__inner{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.brand-item{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint)}
+
+/* ============================================
+   ANIMATIONS
+============================================ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media(max-width:960px){
+  .hero__inner{grid-template-columns:1fr;gap:48px}
+  .hero__visual{display:none}
+  .problem__grid{grid-template-columns:1fr}
+  .pain-card:first-child,.pain-card:last-child{border-radius:0}
+  .pain-card:first-child{border-radius:var(--radius-md) var(--radius-md) 0 0}
+  .pain-card:last-child{border-radius:0 0 var(--radius-md) var(--radius-md)}
+  .solution__steps{grid-template-columns:1fr}
+  .product__wrap{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .section{padding:72px 0}
+  .hero{padding:120px 0 80px}
+  .btn-lg{padding:18px 32px}
+  .hero__ctas{flex-direction:column;align-items:stretch}
+  .btn-outline{display:none}
+  .problem__statement{padding:32px 24px}
+  .footer__grid{grid-template-columns:1fr}
+  .brand-bar__inner{gap:24px}
+  .urgency__divider{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="container">
+    <div class="nav__inner">
+      <div class="nav__logo">The<span>Buyer</span>System</div>
+      <div class="nav__cta">
+        <a href="#modules" class="nav__link">What You Get</a>
+        <a href="#pricing" class="btn btn-gold btn-nav">Get Access — ₦85,000</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__grid-bg"></div>
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <div class="hero__tag reveal">
+          <span class="hero__tag-dot"></span>
+          Built for Nigerian Business Owners
+        </div>
+        <h1 class="display-1 hero__headline reveal reveal-delay-1">
+          Your followers are<br/><em>buyers</em>.<br/>They just need<br/>a reason to pay.
+        </h1>
+        <p class="body-lg hero__sub reveal reveal-delay-2">
+          The Buyer System is a complete 3-step framework for turning your existing social media audience into consistent, predictable revenue — without spending a naira on ads.
+        </p>
+        <div class="hero__ctas reveal reveal-delay-3">
+          <a href="#pricing" class="btn btn-gold btn-lg">Get The Buyer System — ₦85,000</a>
+          <a href="#modules" class="btn btn-outline">See what's inside</a>
+        </div>
+        <div class="hero__proof reveal reveal-delay-3">
+          <div class="hero__avatars">
+            <div class="hero__avatar-fake" style="background:#2A2A27">AC</div>
+            <div class="hero__avatar-fake" style="background:#222220">BI</div>
+            <div class="hero__avatar-fake" style="background:#1E1E1B">KO</div>
+            <div class="hero__avatar-fake" style="background:#1A1A18">TS</div>
+          </div>
+          <p class="hero__proof-text"><strong>340+ business owners</strong> have used this system to activate their audiences</p>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal reveal-delay-2">
+        <div class="hero__card">
+          <div class="hero__metric">
+            <div class="metric-label">Revenue from social media</div>
+            <div class="metric-value"><span>₦</span>1,240,000</div>
+            <div class="metric-change">↑ +340% in 90 days</div>
+          </div>
+          <div class="hero__bars">
+            <div class="bar-row">
+              <span class="bar-label">Instagram</span>
+              <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+              <span class="bar-val">82%</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">WhatsApp</span>
+              <div class="bar-track"><div class="bar-fill" style="width:71%"></div></div>
+              <span class="bar-val">71%</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Referrals</span>
+              <div class="bar-track"><div class="bar-fill" style="width:54%"></div></div>
+              <span class="bar-val">54%</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Repeat</span>
+              <div class="bar-track"><div class="bar-fill" style="width:67%"></div></div>
+              <span class="bar-val">67%</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero__card-2">
+          <div class="card-2-label">This month's orders</div>
+          <div class="card-2-val">47</div>
+          <div class="card-2-sub">from 0 paid ads</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY BAR -->
+<div class="urgency">
+  <div class="container">
+    <div class="urgency__inner">
+      <div class="urgency__text">
+        <strong>Launch price closes soon.</strong> Price increases to ₦145,000 when the timer hits zero.
+      </div>
+      <div class="urgency__divider"></div>
+      <div class="urgency__counter">
+        Time left:
+        <span class="counter-box" id="cnt-h">00</span> hrs
+        <span class="counter-box" id="cnt-m">00</span> min
+        <span class="counter-box" id="cnt-s">00</span> sec
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND BAR -->
+<div class="brand-bar">
+  <div class="container">
+    <div class="brand-bar__inner">
+      <span class="brand-item">Lagos</span>
+      <span class="brand-item">Abuja</span>
+      <span class="brand-item">Port Harcourt</span>
+      <span class="brand-item">Ibadan</span>
+      <span class="brand-item">Kano</span>
+      <span class="brand-item">Enugu</span>
+      <span class="brand-item">Benin City</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section problem" id="problem">
+  <div class="container">
+    <div class="problem__header reveal">
+      <span class="label">The Real Problem</span>
+      <h2 class="display-2">You don't have a content problem.<br/>You have a conversion problem.</h2>
+      <p class="body-lg" style="max-width:620px;margin:0 auto">Every day, thousands of potential customers scroll past your posts. They see your work. They want what you sell. Then they keep scrolling. Here's why.</p>
+    </div>
+
+    <div class="problem__grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon">📱</div>
+        <div class="pain-title">You post consistently. Nothing converts.</div>
+        <p class="pain-text">You follow the trends. You show up daily. Your engagement numbers look reasonable. But at the end of the month, the posts don't add up to sales. Because reach is not revenue.</p>
+      </div>
+      <div class="pain-card reveal reveal-delay-1">
+        <div class="pain-icon">💬</div>
+        <div class="pain-title">People DM you. Then go cold.</div>
+        <p class="pain-text">Interested prospects show up in your DMs. You reply. You wait. They go quiet. You have no system to follow them through a decision. The sale dies in the conversation.</p>
+      </div>
+      <div class="pain-card reveal reveal-delay-2">
+        <div class="pain-icon">🔁</div>
+        <div class="pain-title">You rely on referrals that arrive by accident.</div>
+        <p class="pain-text">Some months are good. Some are dead. You never know which it will be until it is already happening. Referrals are not a strategy. They are a lottery. And your business cannot run on luck.</p>
+      </div>
+    </div>
+
+    <div class="problem__statement reveal">
+      <h3 class="display-3">The problem is not your product.<br/>It is the gap between <em style="color:var(--gold)">attention</em> and <em style="color:var(--gold)">action.</em></h3>
+      <p>There is no system converting your audience into buyers. No clear path. No trigger. No follow-through. The Buyer System closes that gap in three precise steps.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section" id="solution">
+  <div class="container">
+    <div class="solution__header reveal">
+      <span class="label">The Solution</span>
+      <h2 class="display-2">Three steps. One system.<br/>Revenue that moves every month.</h2>
+      <p class="body-lg" style="max-width:600px;margin:0 auto">The Buyer System is not a course about posting better. It is a revenue architecture — built specifically for Nigerian business owners operating on Instagram, WhatsApp, and social platforms.</p>
+    </div>
+
+    <div class="solution__steps">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon">🎯</div>
+        <h3 class="step-title">Activate Your Audience</h3>
+        <p class="step-text">You will identify the 20% of your existing followers who are ready to buy right now. Then you will place a specific trigger in front of them — not an ad, a positioned message that creates urgency and intention.</p>
+        <div class="step-result">↑ Identify buyers in your current audience</div>
+      </div>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div class="step-icon">⚡</div>
+        <h3 class="step-title">Build The Conversion Path</h3>
+        <p class="step-text">You will install a simple 3-message WhatsApp sequence and an offer page that removes every reason not to buy. No tech expertise required. No fancy tools. Just a clear path from interest to payment.</p>
+        <div class="step-result">↑ A direct route from DM to bank alert</div>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div class="step-icon">🔄</div>
+        <h3 class="step-title">Lock In Repeat Revenue</h3>
+        <p class="step-text">A customer who buys once is an asset. A customer who keeps buying is a business. You will set up a simple reactivation sequence that brings previous buyers back every 30 to 60 days without starting from scratch each month.</p>
+        <div class="step-result">↑ Turn one sale into five over a year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT MODULES -->
+<section class="section product" id="modules">
+  <div class="container">
+    <div class="product__header reveal">
+      <span class="label">What's Inside</span>
+      <h2 class="display-2">Six modules. Complete execution.<br/>Nothing left for you to figure out.</h2>
+    </div>
+
+    <div class="product__wrap">
+      <div class="module-list" id="moduleList">
+        <div class="module active" data-module="0">
+          <span class="module-num">01</span>
+          <div class="module-info">
+            <div class="module-title">The Buyer Audit</div>
+            <div class="module-meta">4 lessons · Templates included</div>
+          </div>
+          <span class="module-arrow">→</span>
+        </div>
+        <div class="module" data-module="1">
+          <span class="module-num">02</span>
+          <div class="module-info">
+            <div class="module-title">The Activation Script</div>
+            <div class="module-meta">5 lessons · Scripts + copy templates</div>
+          </div>
+          <span class="module-arrow">→</span>
+        </div>
+        <div class="module" data-module="2">
+          <span class="module-num">03</span>
+          <div class="module-info">
+            <div class="module-title">The Offer Architecture</div>
+            <div class="module-meta">6 lessons · Offer builder worksheet</div>
+          </div>
+          <span class="module-arrow">→</span>
+        </div>
+        <div class="module" data-module="3">
+          <span class="module-num">04</span>
+          <div class="module-info">
+            <div class="module-title">The WhatsApp Conversion Path</div>
+            <div class="module-meta">5 lessons · 3-message sequences</div>
+          </div>
+          <span class="module-arrow">→</span>
+        </div>
+        <div class="module" data-module="4">
+          <span class="module-num">05</span>
+          <div class="module-info">
+            <div class="module-title">The 30-Day Revenue Calendar</div>
+            <div class="module-meta">4 lessons · Plug-and-play calendar</div>
+          </div>
+          <span class="module-arrow">→</span>
+        </div>
+        <div class="module" data-module="5">
+          <span class="module-num">06</span>
+          <div class="module-info">
+            <div class="module-title">The Repeat Buyer Machine</div>
+            <div class="module-meta">4 lessons · Reactivation templates</div>
+          </div>
+          <span class="module-arrow">→</span>
+        </div>
+      </div>
+
+      <div class="module-detail" id="moduleDetail">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE STACK -->
+<section class="section value-stack">
+  <div class="container">
+    <div class="value-stack__header reveal">
+      <span class="label">What You're Getting</span>
+      <h2 class="display-2">Everything packaged.<br/>Nothing held back.</h2>
+    </div>
+
+    <div class="stack-table reveal">
+      <div class="stack-row">
+        <span class="stack-item">The Buyer System — 6 Core Modules (28 lessons)</span>
+        <span class="stack-price real">₦120,000</span>
+      </div>
+      <div class="stack-row">
+        <span class="stack-item">The Activation Script Pack — 14 done-for-you caption and DM templates</span>
+        <span class="stack-price real">₦40,000</span>
+      </div>
+      <div class="stack-row">
+        <span class="stack-item">The WhatsApp Conversion Kit — 3 complete message sequences</span>
+        <span class="stack-price real">₦35,000</span>
+      </div>
+      <div class="stack-row">
+        <span class="stack-item">The 30-Day Revenue Calendar — week-by-week execution plan</span>
+        <span class="stack-price real">₦25,000</span>
+      </div>
+      <div class="stack-row bonus">
+        <span class="stack-item">🎁 BONUS: The Offer Page Template (Paystack-ready, no code)</span>
+        <span class="stack-price real">₦45,000</span>
+      </div>
+      <div class="stack-row bonus">
+        <span class="stack-item">🎁 BONUS: 30-minute strategy session with the Buyer System team</span>
+        <span class="stack-price real">₦60,000</span>
+      </div>
+      <div class="stack-total">
+        <span class="total-label">Total Value</span>
+        <span class="total-val">₦325,000</span>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="label" style="margin-bottom:8px">Your investment today</p>
+      <div class="vs-price"><del>₦145,000</del> ₦85,000</div>
+      <p class="vs-sub">≈ $55 USD · One-time payment · Lifetime access</p>
+      <a href="#pricing" class="btn btn-gold btn-lg">Get Instant Access</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials__header reveal">
+      <span class="label">Results</span>
+      <h2 class="display-2">They stopped waiting for referrals.<br/>Here's what happened next.</h2>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">I had 4,200 Instagram followers and was making maybe ₦80,000 a month from the business. After going through the Activation Script module, I ran one campaign to my existing audience and made <em>₦340,000 in 11 days.</em> Same followers. Different approach.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AC</div>
+          <div>
+            <div class="testi-name">Adaeze Chukwu</div>
+            <div class="testi-biz">Natural hair salon, Abuja</div>
+          </div>
+        </div>
+        <div class="testi-result">₦340,000 in 11 days from existing audience</div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">The WhatsApp sequence alone changed everything. I used to reply DMs and lose people. Now I have a script. Three messages. I close about <em>6 out of every 10 conversations</em> that come in. Before it was maybe 1 out of 10. The difference is the structure.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">BI</div>
+          <div>
+            <div class="testi-name">Biodun Ike</div>
+            <div class="testi-biz">Men's fashion brand, Lagos</div>
+          </div>
+        </div>
+        <div class="testi-result">60% DM close rate vs 10% before</div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">I run a small food business. I thought the system was for bigger companies. But everything inside is designed for exactly where I am. The 30-day calendar gave me a plan I could actually follow. <em>Three months in, I have my first ₦1M month.</em></p>
+        <div class="testi-author">
+          <div class="testi-avatar">KO</div>
+          <div>
+            <div class="testi-name">Kemi Okafor</div>
+            <div class="testi-biz">Catering business, Ibadan</div>
+          </div>
+        </div>
+        <div class="testi-result">First ₦1,000,000 month in 90 days</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq__header reveal">
+      <span class="label">Questions</span>
+      <h2 class="display-2">Straight answers.</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Is this for any type of business?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The Buyer System was built for Nigerian service and product businesses that already have a social media presence but are not converting consistently. It works for salons, food businesses, fashion, coaching, photography, events, and any business where customers discover you online. If you sell something and have any social media following — even 500 people — this system will work.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">I am not good with technology. Can I still use this?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">The entire system runs on tools you already use: Instagram, WhatsApp, and Google Forms. There is nothing new to install. No software to learn. The bonus Offer Page Template is built in a simple no-code format that works with Paystack, which most Nigerian business owners already have or can set up in 10 minutes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long before I see results?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Most people who complete Module 2 (The Activation Script) and run their first campaign see results within 7 to 14 days. The fastest result we have documented was 4 days. The system is built for speed — it works with what you already have rather than building something new from scratch. You do not need to wait months to see a return.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">I have a small following. Does this work?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The Buyer System is designed around engagement quality, not follower count. We have had clients with under 800 followers generate ₦200,000 in a month using the system. Followers who already trust you are more valuable than a large audience that does not know you. The system teaches you to work the audience you already have before chasing a bigger one.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What makes this different from other marketing courses?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Most marketing courses teach you strategy and content theory. The Buyer System is an execution system. Every module has specific scripts, templates, and step-by-step workflows you implement immediately. There is no content about mindset or motivation. It is entirely operational. You will not finish it wondering what to do next — you will be doing it.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if it does not work for me?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">We offer a 21-day action guarantee. If you complete the first three modules, run your first activation campaign, and do not generate at least ₦50,000 in documented results within 21 days, we will refund your full payment. We require proof of implementation — this is not a satisfaction guarantee, it is a results guarantee. We stand behind the system because the system works.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is this a one-time payment or a subscription?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">One-time payment. ₦85,000 gives you lifetime access to all six modules, all templates and scripts, all bonuses, and all future updates to the system. There are no monthly charges, no renewal fees, and no hidden costs after purchase.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How do I access the materials after payment?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">You will receive an email confirmation within 5 minutes of payment. It will contain your login details for the private dashboard where all modules, videos, templates, and downloads are stored. Access is immediate and available from any device at any time.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <div class="pricing__header reveal">
+      <span class="label">Get Access</span>
+      <h2 class="display-2">One system. One payment.<br/>Revenue every month after.</h2>
+    </div>
+
+    <div class="pricing-card reveal">
+      <div class="pricing-card__top">
+        <span class="pricing-badge">Launch Offer — Closes Soon</span>
+        <h3 class="pricing-name">The Buyer System</h3>
+        <p class="pricing-desc">Complete access to all 6 modules, all templates, all bonuses, and the strategy session.</p>
+        <div class="price-display">
+          <span class="price-old">₦145,000</span>
+          <span class="price-main">₦85,000</span>
+        </div>
+        <p class="price-usd">≈ $55 USD · One-time · Lifetime access</p>
+        <a href="https://paystack.com/buy/the-buyer-system" class="btn btn-gold btn-lg btn-full" id="mainCTA" onclick="fbq('track','InitiateCheckout');gtag('event','begin_checkout')">
+          Pay Now — Get Instant Access →
+        </a>
+      </div>
+      <div class="pricing-card__body">
+        <ul class="feature-list">
+          <li class="feature-item"><span class="feature-check">✓</span> 6 core modules with 28 structured lessons</li>
+          <li class="feature-item"><span class="feature-check">✓</span> The Activation Script Pack — 14 done-for-you templates</li>
+          <li class="feature-item"><span class="feature-check">✓</span> The WhatsApp Conversion Kit — 3 complete message sequences</li>
+          <li class="feature-item"><span class="feature-check">✓</span> The 30-Day Revenue Calendar</li>
+          <li class="feature-item"><span class="feature-check">✓</span> BONUS: Paystack-ready Offer Page Template</li>
+          <li class="feature-item"><span class="feature-check">✓</span> BONUS: 30-minute strategy session with the team</li>
+          <li class="feature-item"><span class="feature-check">✓</span> Lifetime access — including all future updates</li>
+          <li class="feature-item"><span class="feature-check">✓</span> 21-Day Action Guarantee</li>
+        </ul>
+        <div class="guarantee">
+          <span class="guarantee-icon">🛡</span>
+          <div>
+            <strong style="color:var(--text);display:block;margin-bottom:6px">21-Day Action Guarantee</strong>
+            Complete the first three modules. Run your first activation. If you don't generate at least ₦50,000 in documented results within 21 days, we refund every naira. No questions. No back-and-forth.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="cta-section__bg"></div>
+  <div class="container" style="position:relative;z-index:1;text-align:center">
+    <div class="reveal">
+      <span class="label">The decision</span>
+      <h2 class="display-2">You already have the audience.<br/>You just need the system.</h2>
+      <span class="body-lg" style="display:block;margin:20px auto 40px;max-width:560px">Every month you spend without a conversion system is revenue that moves from your audience to someone else's. The Buyer System costs ₦85,000. One activation campaign typically returns 4 to 10 times that. The math is not complicated.</span>
+      <a href="#pricing" class="btn btn-gold btn-lg" onclick="fbq('track','InitiateCheckout')">Get The Buyer System — ₦85,000</a>
+      <p class="body-sm" style="margin-top:20px;color:var(--text-faint)">Launch price. Lifetime access. 21-day results guarantee.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">The<span>Buyer</span>System</div>
+        <p class="footer__tagline">The revenue conversion system built for Nigerian business owners.</p>
+        <p class="body-sm" style="margin-top:8px">Operated by The Showcase Global Company</p>
+      </div>
+      <div>
+        <div class="footer__col-title">Product</div>
+        <ul class="footer__links">
+          <li><a href="#modules">What's Inside</a></li>
+          <li><a href="#testimonials">Results</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Legal</div>
+        <ul class="footer__links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Contact</div>
+        <ul class="footer__links">
+          <li><a href="mailto:wearetheshowcase@gmail.com">wearetheshowcase@gmail.com</a></li>
+          <li><a href="#">WhatsApp Support</a></li>
+          <li><a href="https://staypinched.com">The Pinch Network</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__legal">© 2026 The Showcase Global Company. All rights reserved.</span>
+      <div>
+        <a href="#" class="footer__legal">Privacy</a>
+        <a href="#" class="footer__legal">Terms</a>
+        <a href="#" class="footer__legal">Refunds</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============================================
+// MODULE DATA
+// ============================================
+const modules = [
+  {
+    title: "The Buyer Audit",
+    tag: "Module 01",
+    desc: "Before you run any campaign, you need to know exactly who in your current audience is already ready to buy. The Buyer Audit is a structured diagnostic that identifies your highest-intent followers using three data signals available to any Nigerian business owner with a smartphone.",
+    lessons: [
+      "How to read engagement signals vs. passive followers",
+      "The 3-filter method for identifying warm buyers",
+      "Audit worksheet: score your current audience",
+      "Building your first buyer segment list",
+    ]
+  },
+  {
+    title: "The Activation Script",
+    tag: "Module 02",
+    desc: "The Activation Script is the specific content and message format that moves someone from casual follower to active buyer. It is not a generic caption. It is a structured communication that triggers buying intent using specific psychological and situational cues that work in the Nigerian market.",
+    lessons: [
+      "The 4-part Activation Script formula",
+      "14 fill-in-the-blank templates across 7 business types",
+      "When and how often to run activation campaigns",
+      "Caption writing for Instagram vs. WhatsApp Status",
+      "How to measure if your script is working",
+    ]
+  },
+  {
+    title: "The Offer Architecture",
+    tag: "Module 03",
+    desc: "Most Nigerian business owners lose sales not because the product is wrong, but because the offer is not structured to close. This module teaches you how to package, position, and price your product or service so that saying yes feels easier than saying no.",
+    lessons: [
+      "The 5 components of an irresistible offer",
+      "How to add perceived value without reducing your margin",
+      "Scarcity and urgency — the ethical version",
+      "Offer builder worksheet",
+      "Pricing strategy for the Nigerian market",
+      "Building a simple one-page offer document",
+    ]
+  },
+  {
+    title: "The WhatsApp Conversion Path",
+    tag: "Module 04",
+    desc: "WhatsApp is where Nigerian business deals close. This module gives you a precise 3-message sequence that moves a DM inquiry from opener to payment confirmation. You will never again lose a prospect in the conversation.",
+    lessons: [
+      "Why most DM conversations fail at message 2",
+      "The 3-message conversion sequence (with templates)",
+      "Handling the 6 most common Nigerian buyer objections",
+      "Following up without being annoying",
+      "Setting up a simple WhatsApp Business catalogue",
+    ]
+  },
+  {
+    title: "The 30-Day Revenue Calendar",
+    tag: "Module 05",
+    desc: "Consistency is the gap between a good month and a bad one. The 30-Day Revenue Calendar tells you exactly what to post, when to activate, when to follow up, and when to restock your offer — every day for a full month. Just execute the plan.",
+    lessons: [
+      "The monthly revenue rhythm for Nigerian businesses",
+      "Week 1: Build, Week 2: Activate, Week 3: Convert, Week 4: Retain",
+      "Plug-and-play calendar template (editable Google Sheet)",
+      "How to repeat the system month after month",
+    ]
+  },
+  {
+    title: "The Repeat Buyer Machine",
+    tag: "Module 06",
+    desc: "Your best next customer is someone who already bought from you. This module installs a reactivation system that brings previous buyers back to purchase again — without you manually chasing each person every month.",
+    lessons: [
+      "Why repeat buyers cost 80% less to convert than new customers",
+      "Building your buyer database (no paid CRM needed)",
+      "The 30-day and 60-day reactivation message templates",
+      "Creating a loyalty structure that keeps buyers returning",
+    ]
+  }
+];
+
+// ============================================
+// RENDER MODULE DETAIL
+// ============================================
+function renderModule(idx) {
+  const m = modules[idx];
+  const el = document.getElementById('moduleDetail');
+  el.innerHTML = `
+    <div class="module-detail__tag"><span class="label">${m.tag}</span></div>
+    <h3 class="module-detail__title">${m.title}</h3>
+    <p class="module-detail__desc">${m.desc}</p>
+    <ul class="lesson-list">
+      ${m.lessons.map(l=>`<li class="lesson-item"><span class="lesson-icon">→</span>${l}</li>`).join('')}
+    </ul>
+  `;
+}
+
+document.querySelectorAll('.module').forEach((el,i) => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.module').forEach(m=>m.classList.remove('active'));
+    el.classList.add('active');
+    renderModule(i);
+  });
+});
+renderModule(0);
+
+// ============================================
+// SCROLL EFFECTS
+// ============================================
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// ============================================
+// FAQ ACCORDION
+// ============================================
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+// ============================================
+// COUNTDOWN TIMER (72 hours from load)
+// ============================================
+const stored = localStorage.getItem('bs_deadline');
+let deadline;
+if(stored) {
+  deadline = parseInt(stored);
+} else {
+  deadline = Date.now() + (72 * 60 * 60 * 1000);
+  localStorage.setItem('bs_deadline', deadline);
+}
+
+function updateTimer() {
+  const diff = deadline - Date.now();
+  if(diff <= 0) {
+    document.getElementById('cnt-h').textContent = '00';
+    document.getElementById('cnt-m').textContent = '00';
+    document.getElementById('cnt-s').textContent = '00';
+    return;
+  }
+  const h = Math.floor(diff/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cnt-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cnt-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cnt-s').textContent = String(s).padStart(2,'0');
+}
+updateTimer();
+setInterval(updateTimer, 1000);
+</script>
+</body>
+</html>
